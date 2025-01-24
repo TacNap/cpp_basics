@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 #include "bar_object.h" // Only need to include the header file
+using namespace std; // No longer need to specify std::
 
-// Functions
+// ---- Functions ---- //
     // Must be defined before being used
 void strings() {
     std::cout << "Strings!" << std::endl;
@@ -42,9 +43,37 @@ void parameters(int x = 5, int y = 4) {
     std::cout << x + y;
 }
 
-void types() {
-    std::cout << "Data Types!" << std::endl;
-    std::cout << "C++ contains many MANY different data types" << std::endl;
+void variables() {
+    std::cout << endl << "Variables!" << std::endl;
+    // C++ contains many MANY different data types
+
+    // Declaring & Initialising
+    int a, b;
+    a = 10;
+    cout << b << endl; // Prints out some very strange values when not yet defined.
+
+    int Aa, Bb = 3; // Aa does NOT become 3 here.
+    Aa = 2 + (a = 5); // a becomes 5 before Aa becomes 7
+
+    a = b = Aa = 5; // All three variables == 5
+
+    // Arithmetic
+    a = 10%2;
+    a += 1;
+    cout << a++ << endl; // Print then iterate
+    cout << ++a << endl; // Iterate then print
+
+    // Comparison Operators
+    // < > <= >= ! == && ||
+    cout << (1 == 2) << endl; // 0
+    cout << (1 != 2) << endl; // 1
+    cout << ((1 == 2) && (1 == 1)) << endl; // 0
+    
+    // Conditional Ternary Operator
+    // Condition ? result1 : result2
+    bool x_condition = true;
+    int y = x_condition ? 1 : 0;
+    cout << y << endl;
 
 }
 
@@ -101,9 +130,9 @@ void imported_classes() {
     std::cout << "Range: " << barOne.range() << std::endl;
     std::cout << "Get Open: " << barOne.getOpen() << std::endl;
     std::cout << "Get Close: " << barOne.getClose() << std::endl;
-
-
 }
+
+// ---- Main ---- // 
 int main() { // Entry point of every program
     strings();
     std::cout << std::endl;
@@ -113,7 +142,7 @@ int main() { // Entry point of every program
     std::cout << std::endl;
     parameters(5, 10);
     std::cout << std::endl;
-    types();
+    variables();
     std::cout << std::endl;
     classes();
     std::cout << std::endl;
