@@ -1,31 +1,26 @@
 #include <iostream>
 #include <string>
-#include "bar_object.h" // Only need to include the header file
-using namespace std; // No longer need to specify std::
+#include "bar_object.h"
+using namespace std;
 
-// ---- Functions ---- //
-    // Must be defined before being used
 void strings() {
     std::cout << "Strings!" << std::endl;
-    std::string newString = "I Love"; // Needs an 'endline'
+    std::string newString = "I Love";
     std::string otherString = " Concatenation";
 
-    // Concatenation
     std::cout << newString + otherString << std::endl;
     std::cout << newString + " Tanja" << std::endl;
 
-    // Built-in String Functions
     std::cout << "String Length: " << newString.length() << std::endl;
 
-    // Mutating Strings
     newString.append (" Tanja");
 }
 
 void references() {
     std::cout << "References!" << std::endl;
     std::string actualString = "FooBar";
-    std::string& refString = actualString; // Assigns a reference to actualString
-    refString += ", Hello!"; // Mutates 'actualString' through the reference
+    std::string& refString = actualString;
+    refString += ", Hello!";
     std::cout << refString << std::endl << actualString << std::endl;
     std::cout << "refString value, which is actualString's address: "<< &refString << std::endl;
 }
@@ -34,7 +29,6 @@ void printing() {
     std::cout << "Printing!" << std::endl;
     printf("Printf is more performant in some unique cases, but generally less safe");
     std::cout << std::endl << "Printing with `cout` is preferred in most cases" << std::endl;
-
 }
 
 void parameters(int x = 5, int y = 4) {
@@ -45,65 +39,51 @@ void parameters(int x = 5, int y = 4) {
 
 void variables() {
     std::cout << endl << "Variables!" << std::endl;
-    // C++ contains many MANY different data types
 
-    // Declaring & Initialising
     int a, b;
     a = 10;
-    cout << b << endl; // Prints out some very strange values when not yet defined.
+    cout << b << endl;
 
-    int Aa, Bb = 3; // Aa does NOT become 3 here.
-    Aa = 2 + (a = 5); // a becomes 5 before Aa becomes 7
+    int Aa, Bb = 3;
+    Aa = 2 + (a = 5);
 
-    a = b = Aa = 5; // All three variables == 5
+    a = b = Aa = 5;
 
-    // Arithmetic
     a = 10%2;
     a += 1;
-    cout << a++ << endl; // Print then iterate
-    cout << ++a << endl; // Iterate then print
+    cout << a++ << endl;
+    cout << ++a << endl;
 
-    // Comparison Operators
-    // < > <= >= ! == && ||
-    cout << (1 == 2) << endl; // 0
-    cout << (1 != 2) << endl; // 1
-    cout << ((1 == 2) && (1 == 1)) << endl; // 0
+    cout << (1 == 2) << endl;
+    cout << (1 != 2) << endl;
+    cout << ((1 == 2) && (1 == 1)) << endl;
     
-    // Conditional Ternary Operator
-    // Condition ? result1 : result2
     bool x_condition = true;
     int y = x_condition ? 1 : 0; 
-    cout << y << endl; // 1
-
+    cout << y << endl;
 }
 
 void classes() {
     std::cout << "Classes!" << std::endl;
-    // Class Declaration
     class Person {
     private:
-        // Member Variables
         std::string name;
         int age;
 
     public:
-        // Constructor
         Person(std::string n, int a) {
             name = n;
             age = a;
         }
 
-        // Member Functions
         void introduce() {
             std::cout << "I'm alive! and my name is " << name << std::endl;
         }
 
-        // Getter Methods
         std::string getName() {
             return name;
         }
 
-        // Setter Methods
         void setName(std::string n) {
             name = n;
         }
@@ -113,7 +93,6 @@ void classes() {
         }
     };
 
-    // Object Instatiation
     Person joe("Joe", 32);
 
     joe.introduce();
@@ -124,7 +103,6 @@ void classes() {
 }
 
 void imported_classes() {
-    // Constructor Implementation
     std::cout << "Imported Classes!" << std::endl;
     Bar barOne(256, 250, 260, 240);
     std::cout << "Range: " << barOne.range() << std::endl;
@@ -132,4 +110,87 @@ void imported_classes() {
     std::cout << "Get Close: " << barOne.getClose() << std::endl;
 }
 
+void character_sequences() {
+    std::cout << "Character Sequences!" << std::endl;
+    
+    char word[10] = { 'h', 'e', 'l' ,'l','o','\0'};
+    char wordLiteral[] = "Hello";
 
+    cout << wordLiteral << endl;
+    cout << wordLiteral[1] << endl;
+    wordLiteral[1] = 'R';
+    cout << wordLiteral << endl;
+}
+
+void loops() {
+    std::cout << "Loops!" << std::endl;
+    
+    int v[] = {11, 22, 33, 44};
+
+    for (auto i : v) {
+        i += 10;
+    }
+
+    for (auto& i : v) {
+        i += 10;		
+    }
+    
+    cout << "Array after modification: ";
+    for (auto i : v) {
+        cout << i << " ";
+    }
+    cout << endl;
+}
+
+void pointers() {
+    std::cout << "Pointers!" << std::endl;
+    
+    int x = 3;
+    cout << "x: " << x << endl;
+
+    int* y = &x;
+    cout << "Address of x: " << y << endl;
+
+    int& z = x;
+    cout << "Reference z: " << z << endl;
+
+    z++;
+    cout << "After z++, z: " << z << endl;
+    cout << "After z++, x: " << x << endl;
+}
+
+int main() {
+    cout << "=== C++ Learning Demonstrations ===" << endl << endl;
+    
+    strings();
+    cout << endl;
+    
+    references();
+    cout << endl;
+    
+    printing();
+    cout << endl;
+    
+    parameters(5, 10);
+    cout << endl;
+    
+    variables();
+    cout << endl;
+    
+    classes();
+    cout << endl;
+    
+    imported_classes();
+    cout << endl;
+    
+    character_sequences();
+    cout << endl;
+    
+    loops();
+    cout << endl;
+    
+    pointers();
+    cout << endl;
+
+    return 0;
+}
