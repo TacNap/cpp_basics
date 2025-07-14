@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <set>
 #include "bar_object.h"
 using namespace std;
 
@@ -159,6 +160,28 @@ void pointers() {
     cout << "After z++, x: " << x << endl;
 }
 
+void sets() {
+    // Requires importing 'set'
+    set<int> num_set; // declare empty set
+
+    int nums_array[] {1, 2, 3, 4};
+}
+
+// Write a function that takes one integer parameter.
+// Return double the value of the parameter 
+int learncpp_double_number(int num) {
+    return num * 2;
+}
+
+// Write a function that reads an integer from teh user, doubles it using the double_number() function,
+// and prints the doubled value out to the console
+void learncpp_double_number_program() {
+    int num;
+    cout << "Enter an integer: ";
+    cin >> num;
+    cout << "After doubling: " << learncpp_double_number(num) << endl;
+}
+
 int main() {
     cout << "=== C++ Learning Demonstrations ===" << endl << endl;
     
@@ -190,6 +213,12 @@ int main() {
     cout << endl;
     
     pointers();
+    cout << endl;
+
+    sets();
+    cout << endl;
+
+    learncpp_double_number_program();
     cout << endl;
 
     return 0;
